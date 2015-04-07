@@ -1,5 +1,7 @@
 package pl.skygold.core;
 
+import java.io.IOException;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -53,5 +55,10 @@ public class CorePlugin extends JavaPlugin {
 		spawnCfg.set("z", z);
 		spawnCfg.set("yaw", yaw);
 		spawnCfg.set("pitch", pitch);
+		try {
+			spawnCfg.save();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
