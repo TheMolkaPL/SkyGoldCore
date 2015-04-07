@@ -1,7 +1,6 @@
 package pl.skygold.core.commands;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import pl.skygold.core.CorePlugin;
@@ -15,11 +14,8 @@ public class SpawnCommand extends Command {
 	}
 	
 	@Override
-	public void handle(CommandSender sender, String label, String[] args) {
-		if(sender instanceof Player){
-			Player player = (Player)sender;
-			player.teleport(CorePlugin.getSpawnLocation());
-			player.sendMessage(CorePlugin.getTag() + ChatColor.GRAY + "Witamy na spawnie.");
-		}
+	public void handle(Player player, String label, String[] args) {
+		player.teleport(CorePlugin.getSpawnLocation());
+		player.sendMessage(CorePlugin.getTag() + ChatColor.GRAY + "Witamy na spawnie.");
 	}
 }
