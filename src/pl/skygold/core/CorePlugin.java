@@ -11,6 +11,7 @@ import pl.skygold.core.ConfigManager.RConfig;
 import pl.skygold.core.commands.HelpCommand;
 import pl.skygold.core.commands.SetSpawnCommand;
 import pl.skygold.core.commands.SpawnCommand;
+import pl.skygold.core.commands.WhoCommand;
 import pl.themolka.cmds.Settings;
 import pl.themolka.cmds.command.Commands;
 
@@ -25,6 +26,7 @@ public class CorePlugin extends JavaPlugin {
 		Commands.register(this, HelpCommand.class);
 		Commands.register(this, SpawnCommand.class);
 		Commands.register(this, SetSpawnCommand.class);
+		Commands.register(this, WhoCommand.class);
 	}
 	
 	public void onDisable(){
