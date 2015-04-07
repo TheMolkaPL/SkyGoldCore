@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *	  http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,23 +25,23 @@ import org.bukkit.command.TabCompleter;
  * @author Aleksander
  */
 public class BukkitCommandExecutor implements CommandExecutor, TabCompleter {
-    private static BukkitCommandExecutor instance;
-    
-    @Override
-    public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
-        Commands.perform(command.getName(), sender, args);
-        return true;
-    }
-    
-    @Override
-    public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
-        return Commands.performCompleter(command.getName(), sender, args);
-    }
-    
-    public static BukkitCommandExecutor getInstance() {
-        if (instance == null) {
-            instance = new BukkitCommandExecutor();
-        }
-        return instance;
-    }
+	private static BukkitCommandExecutor instance;
+	
+	@Override
+	public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
+		Commands.perform(command.getName(), sender, args);
+		return true;
+	}
+	
+	@Override
+	public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
+		return Commands.performCompleter(command.getName(), sender, args);
+	}
+	
+	public static BukkitCommandExecutor getInstance() {
+		if (instance == null) {
+			instance = new BukkitCommandExecutor();
+		}
+		return instance;
+	}
 }
