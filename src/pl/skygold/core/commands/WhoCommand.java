@@ -19,11 +19,11 @@ public class WhoCommand extends Command {
 	@Override
 	public void handle(CommandSender sender, String label, String[] args) {
 		sender.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Na serwerze znajduje sie obecnie " + Bukkit.getOnlinePlayers().size() + " graczy online.");
-		String players = "";
+		List<String> players = new ArrayList<>();
 		for(Player p : Bukkit.getOnlinePlayers()){
-			players += p.getName() + ",";
+			players.add(p.getName());
 		}
-		sender.sendMessage(players);
+		sender.sendMessage(StringUtils.join(players, ", ");
 	}
 
 }
