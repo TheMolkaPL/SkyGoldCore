@@ -34,7 +34,7 @@ public class CorePlugin extends JavaPlugin {
 	}
 	
 	public static String getTag(){
-		return ChatColor.GREEN + "[SkyGold.pl] ";
+		return ChatColor.GREEN + "[McWyspa.pl] ";
 	}
 	
 	public static Location getSpawnLocation(){
