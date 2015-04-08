@@ -15,6 +15,7 @@ import pl.mcwyspa.core.commands.SetSpawnCommand;
 import pl.mcwyspa.core.commands.SpawnCommand;
 import pl.mcwyspa.core.commands.WhoCommand;
 import pl.mcwyspa.core.listeners.PlayerJoinListener;
+import pl.mcwyspa.core.listeners.PlayerQuitListener;
 import pl.themolka.cmds.Settings;
 import pl.themolka.cmds.command.Commands;
 
@@ -27,6 +28,7 @@ public class CorePlugin extends JavaPlugin {
 		//Listeners
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvents(new PlayerJoinListener(), this);
+		pm.registerEvents(new PlayerQuitListener(), this);
 		
 		//Commands
 		Settings.setup(this);
