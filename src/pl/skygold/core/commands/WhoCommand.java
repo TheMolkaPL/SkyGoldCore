@@ -1,5 +1,9 @@
 package pl.skygold.core.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -23,7 +27,7 @@ public class WhoCommand extends Command {
 		for(Player p : Bukkit.getOnlinePlayers()){
 			players.add(p.getName());
 		}
-		sender.sendMessage(StringUtils.join(players, ", ");
+		sender.sendMessage(StringUtils.join(players, ", "));
 	}
 
 }

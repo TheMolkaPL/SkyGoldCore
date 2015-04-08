@@ -1,6 +1,7 @@
 package pl.skygold.core.commands;
 
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import pl.skygold.core.CorePlugin;
@@ -16,6 +17,7 @@ public class SetSpawnCommand extends Command {
 	
 	@Override
 	public void handle(CommandSender sender, String label, String[] args) {
+		Player player = (Player)sender; //nie usuwac, wali bledami O.o
 		CorePlugin.setSpawnLocation(player.getWorld().getName(), player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch());
 		player.sendMessage(CorePlugin.getTag() + ChatColor.GOLD + "Spawn ustawiony.");
 	}
