@@ -24,16 +24,16 @@ public class GamemodeCommand extends Command {
 	public void handle(CommandSender sender, String label, String[] args) {
 		if(args.length == 1){
 			Player player = (Player)sender;
-			if(args[0] == "0"){
+			if(args[0].equalsIgnoreCase("0")){
 				player.setGameMode(GameMode.SURVIVAL);
 				player.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Tryb gry zmieniony na survival.");
-			}else if(args[0] == "1"){
+			}else if(args[0].equalsIgnoreCase("1")){
 				player.setGameMode(GameMode.CREATIVE);
 				player.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Tryb gry zmieniony na kreatywny.");
-			}else if(args[0] == "2"){
+			}else if(args[0].equalsIgnoreCase("2")){
 				player.setGameMode(GameMode.ADVENTURE);
 				player.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Tryb gry zmieniony na przygode.");
-			}else if(args[0] == "3"){
+			}else if(args[0].equalsIgnoreCase("3")){
 				player.setGameMode(GameMode.SPECTATOR);
 				player.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Tryb gry zmieniony na widza.");
 			}else{
@@ -42,16 +42,16 @@ public class GamemodeCommand extends Command {
 		}else if(args.length == 2){
 			Player player = Bukkit.getPlayer(args[1]);
 			if(player != null){
-				if(args[0] == "0"){
+				if(args[0].equalsIgnoreCase("0")){
 					player.setGameMode(GameMode.SURVIVAL);
 					player.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Tryb gry gracza " + player.getName() + " zmieniony na survival.");
-				}else if(args[0] == "1"){
+				}else if(args[0].equalsIgnoreCase("0")){
 					player.setGameMode(GameMode.CREATIVE);
 					player.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Tryb gry gracza " + player.getName() + " zmieniony na kreatywny.");
-				}else if(args[0] == "2"){
+				}else if(args[0].equalsIgnoreCase("0")){
 					player.setGameMode(GameMode.ADVENTURE);
 					player.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Tryb gry gracza " + player.getName() + " zmieniony na przygode.");
-				}else if(args[0] == "3"){
+				}else if(args[0].equalsIgnoreCase("0")){
 					player.setGameMode(GameMode.SPECTATOR);
 					player.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Tryb gry gracza " + player.getName() + " zmieniony na widza.");
 				}else{
