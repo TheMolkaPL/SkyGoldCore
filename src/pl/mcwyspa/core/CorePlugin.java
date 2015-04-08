@@ -39,6 +39,10 @@ public class CorePlugin extends JavaPlugin {
 		return ChatColor.GREEN + "[McWyspa.pl] ";
 	}
 	
+	public static String getUncolouredTag(){
+		return "[McWyspa.pl] ";
+	}
+	
 	public static Location getSpawnLocation(){
 		RConfig spawnCfg = ConfigManager.getConfig("spawn");
 		Location spawn = new Location(null, 0, 0, 0);
