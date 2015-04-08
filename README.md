@@ -9,7 +9,7 @@ Od tego jest zakładka Issues
 Poprawki wysyłamy przez "pull request", kod sobie przejrze i jak będzie ok to zaakceptuje, a ty pojawisz się na liście autorów :)
 
 ## Twórcy
-* @artur9010 (Właściciel i programista McWyspa.pl)
-* @TheMolkaPL
-* @maqes
+* [@artur9010](https://github.com/artur9010) (Właściciel i programista McWyspa.pl)
+* [@TheMolkaPL](https://github.com/TheMolkaPL)
+* [@maqes](https://github.com/maqes)
 * ...i być może ty, programuj mordko!
