@@ -1,9 +1,9 @@
-package pl.skygold.core.commands;
+package pl.mcwyspa.core.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-import pl.skygold.core.CorePlugin;
+import pl.mcwyspa.core.CorePlugin;
 import pl.themolka.cmds.command.Command;
 import pl.themolka.cmds.command.Commands;
 

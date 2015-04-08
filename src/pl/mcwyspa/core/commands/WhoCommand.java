@@ -1,4 +1,4 @@
-package pl.skygold.core.commands;
+package pl.mcwyspa.core.commands;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import pl.skygold.core.CorePlugin;
+import pl.mcwyspa.core.CorePlugin;
 import pl.themolka.cmds.command.Command;
 
 public class WhoCommand extends Command {

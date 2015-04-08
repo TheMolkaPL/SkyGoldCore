@@ -1,4 +1,4 @@
-package pl.skygold.core;
+package pl.mcwyspa.core;
 
 import java.io.File;
 import java.io.FileNotFoundException;

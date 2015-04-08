@@ -1,4 +1,4 @@
-package pl.skygold.core;
+package pl.mcwyspa.core;
 
 import java.io.IOException;
 
@@ -7,11 +7,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import pl.skygold.core.ConfigManager.RConfig;
-import pl.skygold.core.commands.HelpCommand;
-import pl.skygold.core.commands.SetSpawnCommand;
-import pl.skygold.core.commands.SpawnCommand;
-import pl.skygold.core.commands.WhoCommand;
+import pl.mcwyspa.core.ConfigManager.RConfig;
+import pl.mcwyspa.core.commands.HelpCommand;
+import pl.mcwyspa.core.commands.SetSpawnCommand;
+import pl.mcwyspa.core.commands.SpawnCommand;
+import pl.mcwyspa.core.commands.WhoCommand;
 import pl.themolka.cmds.Settings;
 import pl.themolka.cmds.command.Commands;
 
