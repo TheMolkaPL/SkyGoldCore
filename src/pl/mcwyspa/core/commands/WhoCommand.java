@@ -15,7 +15,7 @@ import pl.themolka.cmds.command.Command;
 public class WhoCommand extends Command {
 	
 	public WhoCommand() {
-		super(new String[] {"who"});
+		super(new String[] {"who", "list", "online", "graczeonline"});
 		super.setDescription("Lista graczy online");
 		super.setUsage("who");
 	}

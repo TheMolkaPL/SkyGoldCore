@@ -12,8 +12,8 @@ public class HelpCommand extends Command {
 	CorePlugin plugin;
 	
 	public HelpCommand() {
-		super(new String[] {"help"});
-		super.setDescription("Pomoc");
+		super(new String[] {"help", "pomoc", "?", "h"});
+		super.setDescription("Wyswietla pomoc");
 		super.setUsage("help");
 	}
 	

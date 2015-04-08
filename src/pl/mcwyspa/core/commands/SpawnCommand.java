@@ -8,7 +8,7 @@ import pl.themolka.cmds.command.Command;
 
 public class SpawnCommand extends Command {
 	public SpawnCommand() {
-		super(new String[] {"spawn"});
+		super(new String[] {"spawn", "sapwn"});
 		super.setDescription("Teleportacja na spawn");
 		super.setUsage("spawn");
 	}

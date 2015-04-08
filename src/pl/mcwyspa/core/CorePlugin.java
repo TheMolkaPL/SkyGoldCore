@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import pl.mcwyspa.core.ConfigManager.RConfig;
+import pl.mcwyspa.core.commands.GamemodeCommand;
 import pl.mcwyspa.core.commands.HelpCommand;
 import pl.mcwyspa.core.commands.SetSpawnCommand;
 import pl.mcwyspa.core.commands.SpawnCommand;
@@ -27,6 +28,7 @@ public class CorePlugin extends JavaPlugin {
 		Commands.register(this, SpawnCommand.class);
 		Commands.register(this, SetSpawnCommand.class);
 		Commands.register(this, WhoCommand.class);
+		Commands.register(this, GamemodeCommand.class);
 	}
 	
 	public void onDisable(){

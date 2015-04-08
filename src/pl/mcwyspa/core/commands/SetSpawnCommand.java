@@ -11,7 +11,7 @@ public class SetSpawnCommand extends Command {
 		super(new String[] {"setspawn"});
 		super.setDescription("Ustaw spawn");
 		super.setUsage("setspawn");
-		super.setPermission("skygold.core.setspawn");
+		super.setPermission("mcwyspa.core.setspawn");
 	}
 	
 	@Override
