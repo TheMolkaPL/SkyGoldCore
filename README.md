@@ -1,0 +1,2 @@
+# McWyspaCore
+Core plugin
