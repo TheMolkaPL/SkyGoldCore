@@ -15,7 +15,7 @@ public class WarpCommand extends Command {
 	}
 	
 	@Override
-	public void handle(CommandSender sender, String label, String[] args) {
+	public void handle(CommandSender sender, String label, String[] args) throws CommandException {
 		if(args.length != 0){
 			Player p = (Player)sender;
 			CorePlugin.teleportToWarp(p, args[0]);
