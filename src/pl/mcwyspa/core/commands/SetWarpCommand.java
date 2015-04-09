@@ -17,13 +17,12 @@ public class SetWarpCommand extends Command {
 	}
 	
 	@Override
-	public void handle(CommandSender sender, String label, String[] args) {
+	public void handle(Player player, String label, String[] args) {
 		if(args.length != 0){
-			Player p = (Player)sender;
-			Location l = p.getLocation();
-			CorePlugin.createWarp(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getWorld().getName(), l.getPitch(), args[0], sender);
+			Location l = player.getLocation();
+			CorePlugin.createWarp(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getWorld().getName(), l.getPitch(), args[0], player);
 		}else{
-			sender.sendMessage("/setwarp warp");
+			throw new UsageException("Podaj nazwe warpa!");
 		}
 	}
 
