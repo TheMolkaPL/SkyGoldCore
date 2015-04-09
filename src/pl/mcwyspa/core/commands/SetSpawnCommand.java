@@ -15,7 +15,7 @@ public class SetSpawnCommand extends Command {
 	}
 	
 	@Override
-	public void handle(Player player, String label, String[] args) {
+	public void handle(Player player, String label, String[] args) throws CommandException {
 		CorePlugin.setSpawnLocation(player.getWorld().getName(), player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), player.getLocation().getYaw(), player.getLocation().getPitch());
 		player.sendMessage(CorePlugin.getTag() + ChatColor.GOLD + "Spawn ustawiony.");
 	}
