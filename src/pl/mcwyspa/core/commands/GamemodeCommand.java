@@ -37,7 +37,7 @@ public class GamemodeCommand extends Command {
 				player.setGameMode(GameMode.SPECTATOR);
 				player.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Tryb gry zmieniony na widza.");
 			}else{
-				player.sendMessage(CorePlugin.getTag() + ChatColor.RED + "Poprawne uzycie: /gamemode (0/1/2/3) (nick)");
+				throw new UsageException("Poprawne uzycie: /gamemode (0/1/2/3) (nick)");
 			}
 		}else if(args.length == 2){
 			Player player = Bukkit.getPlayer(args[1]);
@@ -58,11 +58,11 @@ public class GamemodeCommand extends Command {
 					player.sendMessage(CorePlugin.getTag() + ChatColor.RED + "Poprawne uzycie: /gamemode (0/1/2/3) (nick)");
 				}
 			}else{
-				sender.sendMessage(CorePlugin.getTag() + ChatColor.RED + "Podany gracz jest offline.");
+				throw new CommandException("Podany gracz jest offline.");
 			}
 			
 		}else{
-			sender.sendMessage(CorePlugin.getTag() + ChatColor.RED + "Poprawne uzycie: /gamemode (0/1/2/3) (nick)");
+			throw new UsageException("Poprawne uzycie: /gamemode (0/1/2/3) (nick)");
 		}
 	}
 
