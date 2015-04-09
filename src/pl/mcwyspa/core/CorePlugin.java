@@ -1,11 +1,17 @@
 package pl.mcwyspa.core;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+
+import net.minecraft.server.v1_8_R1.ChatSerializer;
+import net.minecraft.server.v1_8_R1.IChatBaseComponent;
+import net.minecraft.server.v1_8_R1.PacketPlayOutPlayerListHeaderFooter;
+import net.minecraft.server.v1_8_R1.PlayerConnection;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,6 +19,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -259,5 +266,29 @@ public class CorePlugin extends JavaPlugin {
 		sender.sendMessage("§a[SkyGold.pl] §cLista warpow:");
 		sender.sendMessage(list);
 	}
+	
+	public static void sendHeaderAndFooter(Player p) {
+		CraftPlayer craftplayer = (CraftPlayer) p;
+		PlayerConnection connection = craftplayer.getHandle().playerConnection;
+		IChatBaseComponent header = ChatSerializer.a("{\"text\": \"§a§k**********§r §b§lMcWyspa.pl  §a§k**********\"}");
+		IChatBaseComponent footer = ChatSerializer.a("{\"text\": \"§chttp://mcwyspa.pl §b* §chttps://facebook.com/mcwyspa\"}");
+		PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter();
+
+		try {
+			Field headerField = packet.getClass().getDeclaredField("a");
+			headerField.setAccessible(true);
+			headerField.set(packet, header);
+			headerField.setAccessible(!headerField.isAccessible());
+
+			Field footerField = packet.getClass().getDeclaredField("b");
+			footerField.setAccessible(true);
+			footerField.set(packet, footer);
+			footerField.setAccessible(!footerField.isAccessible());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		connection.sendPacket(packet);
+	}
+        
 	  
 }
