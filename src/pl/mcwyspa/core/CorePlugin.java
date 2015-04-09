@@ -119,6 +119,7 @@ public class CorePlugin extends JavaPlugin {
 	
 	public void onDisable(){
 		Settings.destroy();
+		ConfigManager.saveAll();
 	}
 	
 	public static String getTag(){
@@ -223,10 +224,10 @@ public class CorePlugin extends JavaPlugin {
 		if(plugin.isWarpExits(warp)){
 			if(player.isOnline()){
 				player.teleport(plugin.getWarpLoc(warp));
-				player.sendMessage(getTag() + "Â§cZostales przeteleportowany do Â§6" + warp + "Â§7.");
+				player.sendMessage(getTag() + "§cZostales przeteleportowany do §6" + warp + "§7.");
 			}
 		}else{
-			player.sendMessage(getTag() + "Â§cTaki warp nie istnieje.");
+			player.sendMessage(getTag() + "§cTaki warp nie istnieje.");
 		}
 	}
 	
@@ -241,7 +242,7 @@ public class CorePlugin extends JavaPlugin {
 		ConfigManager.getConfig("warps").set(warp + ".yaw", yaw);
 		ConfigManager.getConfig("warps").set(warp + ".world", world);
 		ConfigManager.getConfig("warps").set(warp + ".pitch", pitch);
-		sender.sendMessage("Â§7Warp zostal stworzony.");
+		sender.sendMessage("§7Warp zostal stworzony.");
 		ConfigManager.saveAll();
 		return;
 	}
@@ -252,7 +253,7 @@ public class CorePlugin extends JavaPlugin {
 			return;
 		}
 		ConfigManager.getConfig("warps").set(warp, null);
-		sender.sendMessage("Â§7Warp zostal usuniety.");
+		sender.sendMessage("§7Warp zostal usuniety.");
 		ConfigManager.saveAll();
 		return;
 	}
@@ -261,17 +262,17 @@ public class CorePlugin extends JavaPlugin {
 		Set<String> warpy = ConfigManager.getConfig("warps").getKeys(false);
 		String list = "";
 		for(String warp : warpy){
-			list += "Â§7" + warp + "Â§6,";
+			list += "§7" + warp + "§6,";
 		}
-		sender.sendMessage("Â§a[SkyGold.pl] Â§cLista warpow:");
+		sender.sendMessage(getTag() + "§cLista warpow:");
 		sender.sendMessage(list);
 	}
 	
 	public static void sendHeaderAndFooter(Player p) {
 		CraftPlayer craftplayer = (CraftPlayer) p;
 		PlayerConnection connection = craftplayer.getHandle().playerConnection;
-		IChatBaseComponent header = ChatSerializer.a("{\"text\": \"Â§aÂ§k**********Â§r Â§bÂ§lMcWyspa.pl  Â§aÂ§k**********\"}");
-		IChatBaseComponent footer = ChatSerializer.a("{\"text\": \"Â§chttp://mcwyspa.pl Â§b* Â§chttps://facebook.com/mcwyspa\"}");
+		IChatBaseComponent header = ChatSerializer.a("{\"text\": \"§a§k**********§r §b§lMcWyspa.pl  §a§k**********\"}");
+		IChatBaseComponent footer = ChatSerializer.a("{\"text\": \"§chttp://mcwyspa.pl §b* §chttps://facebook.com/mcwyspa\"}");
 		PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter(header);
 
 		try {
