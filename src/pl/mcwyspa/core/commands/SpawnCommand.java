@@ -14,7 +14,7 @@ public class SpawnCommand extends Command {
 	}
 	
 	@Override
-	public void handle(Player player, String label, String[] args) {
+	public void handle(Player player, String label, String[] args) throws CommandException {
 		player.teleport(CorePlugin.getSpawnLocation());
 		player.sendMessage(CorePlugin.getTag() + ChatColor.GRAY + "Witamy na spawnie.");
 	}
