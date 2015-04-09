@@ -19,6 +19,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.skionz.pingapi.PingAPI;
+
 import pl.mcwyspa.core.ConfigManager.RConfig;
 import pl.mcwyspa.core.commands.DelWarpCommand;
 import pl.mcwyspa.core.commands.GamemodeCommand;
@@ -29,6 +31,7 @@ import pl.mcwyspa.core.commands.SpawnCommand;
 import pl.mcwyspa.core.commands.WarpCommand;
 import pl.mcwyspa.core.commands.WhoCommand;
 import pl.mcwyspa.core.listeners.DropListener;
+import pl.mcwyspa.core.listeners.ServerListPingListener;
 import pl.mcwyspa.core.listeners.PlayerJoinListener;
 import pl.mcwyspa.core.listeners.PlayerQuitListener;
 import pl.mcwyspa.core.listeners.SignListener;
@@ -45,6 +48,7 @@ public class CorePlugin extends JavaPlugin {
 	public void onEnable(){
 		//Plugin
 		plugin = this;
+		PingAPI.start();
 		
 		//Config
 		ConfigManager.registerConfig("spawn", "spawn.yml", this);
@@ -57,6 +61,7 @@ public class CorePlugin extends JavaPlugin {
 		pm.registerEvents(new PlayerQuitListener(), this);
 		pm.registerEvents(new DropListener(), this);
 		pm.registerEvents(new SignListener(), this);
+		PingAPI.registerListener(new ServerListPingListener());
 		
 		//Commands
 		Settings.setup(this);
