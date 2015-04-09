@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -18,10 +20,13 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import pl.mcwyspa.core.ConfigManager.RConfig;
+import pl.mcwyspa.core.commands.DelWarpCommand;
 import pl.mcwyspa.core.commands.GamemodeCommand;
 import pl.mcwyspa.core.commands.HelpCommand;
 import pl.mcwyspa.core.commands.SetSpawnCommand;
+import pl.mcwyspa.core.commands.SetWarpCommand;
 import pl.mcwyspa.core.commands.SpawnCommand;
+import pl.mcwyspa.core.commands.WarpCommand;
 import pl.mcwyspa.core.commands.WhoCommand;
 import pl.mcwyspa.core.listeners.DropListener;
 import pl.mcwyspa.core.listeners.PlayerJoinListener;
@@ -44,6 +49,7 @@ public class CorePlugin extends JavaPlugin {
 		//Config
 		ConfigManager.registerConfig("spawn", "spawn.yml", this);
 		ConfigManager.registerConfig("drop", "drop.yml", this);
+		ConfigManager.registerConfig("warps", "warps.yml", this);
 		
 		//Listeners
 		PluginManager pm = getServer().getPluginManager();
@@ -59,6 +65,9 @@ public class CorePlugin extends JavaPlugin {
 		Commands.register(this, SetSpawnCommand.class);
 		Commands.register(this, WhoCommand.class);
 		Commands.register(this, GamemodeCommand.class);
+		Commands.register(this, WarpCommand.class);
+		Commands.register(this, SetWarpCommand.class);
+		Commands.register(this, DelWarpCommand.class);
 		
 		//Random
 		this.random = new Random();
@@ -173,6 +182,77 @@ public class CorePlugin extends JavaPlugin {
 	
 	public static double getDropChance(String item){
 		return ConfigManager.getConfig("drop").getDouble(item);
+	}
+	
+	public boolean isWarpExits(String warp){
+		if(ConfigManager.getConfig("warps").contains(warp)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public Location getWarpLoc(String warp){
+		if(isWarpExits(warp)){
+			Location loc = new Location(null, 0, 0, 0);
+			loc.setX(ConfigManager.getConfig("warps").getDouble(warp + ".x"));
+			loc.setY(ConfigManager.getConfig("warps").getDouble(warp + ".y"));
+			loc.setZ(ConfigManager.getConfig("warps").getDouble(warp + ".z"));
+			loc.setYaw(ConfigManager.getConfig("warps").getInt(warp + ".yaw"));
+			loc.setWorld(Bukkit.getWorld(ConfigManager.getConfig("warps").getString(warp + ".world")));
+			loc.setPitch(ConfigManager.getConfig("warps").getInt(warp + ".pitch"));
+			return loc;
+		}
+		return null;
+		
+	}
+	
+	public static void teleportToWarp(Player player, String warp){
+		if(plugin.isWarpExits(warp)){
+			if(player.isOnline()){
+				player.teleport(plugin.getWarpLoc(warp));
+				player.sendMessage(getTag() + "§cZostales przeteleportowany do §6" + warp + "§7.");
+			}
+		}else{
+			player.sendMessage(getTag() + "§cTaki warp nie istnieje.");
+		}
+	}
+	
+	public static void createWarp(Double x, Double y, Double z, float yaw, String world, float pitch, String warp, CommandSender sender){
+		if(plugin.isWarpExits(warp)){
+			sender.sendMessage("Taki warp juz istnieje.");
+			return;
+		}
+		ConfigManager.getConfig("warps").set(warp + ".x", x);
+		ConfigManager.getConfig("warps").set(warp + ".y", y);
+		ConfigManager.getConfig("warps").set(warp + ".z", z);
+		ConfigManager.getConfig("warps").set(warp + ".yaw", yaw);
+		ConfigManager.getConfig("warps").set(warp + ".world", world);
+		ConfigManager.getConfig("warps").set(warp + ".pitch", pitch);
+		sender.sendMessage("§7Warp zostal stworzony.");
+		ConfigManager.saveAll();
+		return;
+	}
+	
+	public static void delWarp(String warp, CommandSender sender){
+		if(!plugin.isWarpExits(warp)){
+			sender.sendMessage("Taki warp nie istnieje.");
+			return;
+		}
+		ConfigManager.getConfig("warps").set(warp, null);
+		sender.sendMessage("§7Warp zostal usuniety.");
+		ConfigManager.saveAll();
+		return;
+	}
+	
+	public static void listWarps(CommandSender sender){
+		Set<String> warpy = ConfigManager.getConfig("warps").getKeys(false);
+		String list = "";
+		for(String warp : warpy){
+			list += "§7" + warp + "§6,";
+		}
+		sender.sendMessage("§a[SkyGold.pl] §cLista warpow:");
+		sender.sendMessage(list);
 	}
 	  
 }
