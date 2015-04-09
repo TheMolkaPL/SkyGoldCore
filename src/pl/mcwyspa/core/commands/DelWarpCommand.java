@@ -15,9 +15,11 @@ public class DelWarpCommand extends Command {
 	}
 	
 	@Override
-	public void handle(CommandSender sender, String label, String[] args) {
+	public void handle(CommandSender sender, String label, String[] args) throws CommandException {
 		if(args.length != 0){
 			CorePlugin.delWarp(args[0], sender);
+		} else {
+			throw new CommandException("Podaj nazwe warpu!");
 		}
 	}
 
