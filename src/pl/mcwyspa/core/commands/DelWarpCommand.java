@@ -19,7 +19,7 @@ public class DelWarpCommand extends Command {
 		if(args.length != 0){
 			CorePlugin.delWarp(args[0], sender);
 		} else {
-			throw new CommandException("Podaj nazwe warpu!");
+			throw new UsageException("Podaj nazwe warpu!");
 		}
 	}
 
