@@ -21,7 +21,7 @@ public class WhoCommand extends Command {
 	}
 	
 	@Override
-	public void handle(CommandSender sender, String label, String[] args) {
+	public void handle(CommandSender sender, String label, String[] args) throws CommandException {
 		sender.sendMessage(CorePlugin.getTag() + ChatColor.WHITE + "Na serwerze znajduje sie obecnie " + Bukkit.getOnlinePlayers().size() + " graczy online.");
 		List<String> players = new ArrayList<>();
 		for(Player p : Bukkit.getOnlinePlayers()){
