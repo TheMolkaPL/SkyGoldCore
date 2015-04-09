@@ -17,7 +17,7 @@ public class SetWarpCommand extends Command {
 	}
 	
 	@Override
-	public void handle(Player player, String label, String[] args) {
+	public void handle(Player player, String label, String[] args) throws CommandException {
 		if(args.length != 0){
 			Location l = player.getLocation();
 			CorePlugin.createWarp(l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getWorld().getName(), l.getPitch(), args[0], player);
