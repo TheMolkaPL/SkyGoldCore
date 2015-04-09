@@ -21,7 +21,7 @@ public class GamemodeCommand extends Command {
 	//TODO: odbugowac?
 	
 	@Override
-	public void handle(CommandSender sender, String label, String[] args) {
+	public void handle(CommandSender sender, String label, String[] args) throws CommandException {
 		if(args.length == 1){
 			Player player = (Player)sender;
 			if(args[0].equalsIgnoreCase("0")){
