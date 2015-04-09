@@ -18,7 +18,7 @@ public class HelpCommand extends Command {
 	}
 	
 	@Override
-	public void handle(CommandSender sender, String label, String[] args) {
+	public void handle(CommandSender sender, String label, String[] args) throws CommandException {
 		this.printCommands(sender);
 	}
 	
